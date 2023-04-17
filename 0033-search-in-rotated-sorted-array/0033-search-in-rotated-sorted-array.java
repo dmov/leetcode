@@ -6,20 +6,22 @@ class Solution {
         while (startIndex <= endIndex) {
             int midIndex = (startIndex + endIndex) / 2;
             int midElement = nums[midIndex];
-            
+
             if (midElement == target) {
                 return midIndex;
-            } else if (target > midElement) {
-                if (target <= nums[endIndex]) {
-                    startIndex = midIndex + 1;
-                } else {
-                    endIndex = endIndex - 1;
-                }
-            } else {
-                if (target >= nums[startIndex]) {
+            }
+
+            if (nums[startIndex] <= midElement) { // if left part is sorted
+                if (target >= nums[startIndex] && target <= midElement) { // if inside sorted part then let's look in it
                     endIndex = midIndex - 1;
-                } else {
-                    startIndex = startIndex + 1;
+                } else { // let's look in other part
+                    startIndex = midIndex + 1;
+                }
+            } else { // if right part is sorted
+                if (target <= nums[endIndex] && target >= midElement) { // if inside sorted part then let's look in it
+                    startIndex = midIndex + 1;
+                } else {  // let's look in other part
+                    endIndex = midIndex - 1;
                 }
             }
         }
