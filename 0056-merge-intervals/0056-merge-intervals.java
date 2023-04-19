@@ -14,6 +14,6 @@ class Solution {
                 result.add(currentInterval);
             }
         }
-        return result.toArray(new int[result.size()][]);
+        return result.toArray(new int[result.size()][2]);
     }
 }
