@@ -11,7 +11,7 @@ class Solution {
         int previousPartitionIndex = -1;
         for (int i = 0; i < s.length(); i++) {
             currentPartitionIndex = Math.max(currentPartitionIndex, charToMaxIndexMap.get(s.charAt(i)));
-            if (i == currentPartitionIndex) { // if we are in a last possible index for this char
+            if (i == currentPartitionIndex) { // if we are in a last possible index for this char and all previous chars
                 result.add(currentPartitionIndex - previousPartitionIndex);
                 previousPartitionIndex = currentPartitionIndex;
             }
