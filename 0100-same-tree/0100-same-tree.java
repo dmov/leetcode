@@ -17,10 +17,8 @@ class Solution {
     public boolean isSameTree(TreeNode p, TreeNode q) {
         final boolean isPNull = p == null;
         final boolean isQNull = q == null;
-        if (isPNull && isQNull) {
-            return true;
-        } else if (isPNull || isQNull) {
-            return false;
+        if (isPNull || isQNull) {
+            return isPNull && isQNull;
         }
 
         return p.val == q.val && isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
