@@ -12,7 +12,7 @@ class Solution {
                     currentChar,
                     slidingWindowCharToCountMap.getOrDefault(currentChar, 0) + 1
             );
-
+            
             maxRepeatingCount = Math.max(maxRepeatingCount, slidingWindowCharToCountMap.get(currentChar));
 
             final int numberOfOtherSymbolsToReplace = windowEndIndex - windowBeginIndex + 1 - maxRepeatingCount;
@@ -23,6 +23,7 @@ class Solution {
                         slidingWindowCharToCountMap.get(windowBeginChar) - 1
                 );
                 windowBeginIndex++;
+                // NOTE: recalculating here the maxRepeatingCount will not change the final result => we care only about increasing this value
             }
             maxSlidingWindowSize = Math.max(maxSlidingWindowSize, windowEndIndex - windowBeginIndex + 1);
         }
